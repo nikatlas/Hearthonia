@@ -1,0 +1,39 @@
+<html ng-app="heartonia">
+<head>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+
+    
+    <script src="../node_modules/angular/angular.min.js" type="text/javascript"></script>
+    <script src="../node_modules/restangular/node_modules/lodash/index.js" type="text/javascript"></script>
+    <script src="../node_modules/restangular/dist/restangular.min.js" type="text/javascript"></script>
+
+    <script src="js/app.js" type="text/javascript"></script>    
+    <script src="js/hearthapi.js" type="text/javascript"></script>
+    <script src="js/mainctrl.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="container" ng-controller="mainCtrl">
+        <div class="row">
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="exampleInputName2">Attack</label>
+                <input type="text" class="form-control" id="exampleInputName2" placeholder="Attack" ng-model="search.attack">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail2">Mana</label>
+                <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Mana" ng-model="search.cost">
+              </div>
+              <button type="submit" class="btn btn-default" ng-click="refresh()">Refresh</button>
+            </form>
+        </div>
+        <div class="row">
+            <div ng-repeat="card in cards | filter : mana | filter : search" class="col-xs-4">
+                <img ng-src="{{card.img}}"/>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
